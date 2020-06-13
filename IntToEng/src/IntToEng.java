@@ -9,8 +9,8 @@ public class IntToEng {
     static String translateEng(int n) {
     	if (n == 0) {
     		return "zero";
-    	} else if (n < 10000000) {
-    		return onemillionTo9999999(n);
+    	} else if (n < 100000000) {
+    		return tenmillionTo99million(n);
     	}
     	return "";
 
@@ -128,6 +128,21 @@ public class IntToEng {
     	if (nanaketa == 7) return "seven million " + onehundredthousandTo999999(n%10000000);
     	if (nanaketa == 8) return "eight million " + onehundredthousandTo999999(n%10000000);
     	if (nanaketa == 9) return "nine million " + onehundredthousandTo999999(n%10000000);
+    	return "";
+    }
+    
+    static String tenmillionTo99million (int n) {
+    	int hachiketa = (n%100000000) / 10000000;
+    	if (hachiketa == 0) return onemillionTo9999999(n%100000000);
+    	if (hachiketa == 1) return tenToNineteen((n%100000000)/1000000) + " million " + onehundredthousandTo999999(n%1000000);
+    	if (hachiketa == 2) return "twenty " + onemillionTo9999999(n%100000000);
+    	if (hachiketa == 3) return "thirty " + onemillionTo9999999(n%100000000);
+    	if (hachiketa == 4) return "forty " + onemillionTo9999999(n%100000000);
+    	if (hachiketa == 5) return "fifty " + onemillionTo9999999(n%100000000);
+    	if (hachiketa == 6) return "sixty " + onemillionTo9999999(n%100000000);
+    	if (hachiketa == 7) return "seventty " + onemillionTo9999999(n%100000000);
+    	if (hachiketa == 8) return "eighty " + onemillionTo9999999(n%100000000);
+    	if (hachiketa == 9) return "ninety " + onemillionTo9999999(n%100000000);
     	return "";
     }
 }
