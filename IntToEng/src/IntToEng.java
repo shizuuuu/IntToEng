@@ -10,7 +10,7 @@ public class IntToEng {
     	if (n == 0) {
     		return "zero";
     	} else if (n <= Integer.MAX_VALUE) {
-    		return onehundredmillionTo999million(n);
+    		return onebillionToMAXVALUE(n);
     	}
     	return "";
 
@@ -130,7 +130,7 @@ public class IntToEng {
     	if (nanaketa == 9) return "nine million " + onehundredthousandTo999999(n%10000000);
     	return "";
     }
-    
+
     static String tenmillionTo99million(int n) {
     	int hachiketa = (n%100000000) / 10000000;
     	if (hachiketa == 0) return onemillionTo9999999(n%100000000);
@@ -145,7 +145,7 @@ public class IntToEng {
     	if (hachiketa == 9) return "ninety " + onemillionTo9999999(n%100000000);
     	return "";
     }
-    
+
     static String onehundredmillionTo999million(int n) {
     	int kyuketa = (n%1000000000) / 100000000;
     	if (kyuketa == 0) return tenmillionTo99million(n%1000000000);
@@ -158,6 +158,16 @@ public class IntToEng {
     	if (kyuketa == 7) return "seven hundred " + tenmillionTo99million(n%1000000000);
     	if (kyuketa == 8) return "eight hundred " + tenmillionTo99million(n%1000000000);
     	if (kyuketa == 9) return "nine hundred " + tenmillionTo99million(n%1000000000);
+    	return "";
+    }
+
+    static String onebillionToMAXVALUE(int n) {
+    	char tenk = (Integer.toString(n)).charAt(0);
+    	int tenketa = Character.getNumericValue(tenk);
+    	int fromNine = n - tenketa*1000000000;
+    	if (tenketa == 0) return onehundredmillionTo999million(n);
+    	if (tenketa == 1) return "one billion " + onehundredmillionTo999million(fromNine);
+    	if (tenketa == 2) return "two billion " + onehundredmillionTo999million(fromNine);
     	return "";
     }
 }
