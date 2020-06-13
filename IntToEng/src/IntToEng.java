@@ -9,8 +9,8 @@ public class IntToEng {
     static String translateEng(int n) {
     	if (n == 0) {
     		return "zero";
-    	} else if (n < 100000) {
-    		return tenthousandTo99999(n);
+    	} else if (n < 1000000) {
+    		return onehundredthousandTo999999(n);
     	}
     	return "";
 
@@ -55,7 +55,7 @@ public class IntToEng {
     	if (n == 19) return "nineteen";
     	return "";
     }
-    
+
     static String hundredTo999 (int n) {
     	int sanketa = (n%1000) / 100;
     	if (sanketa == 0) return tenToNinetyNine(n%1000);
@@ -70,7 +70,7 @@ public class IntToEng {
     	if (sanketa == 9) return "nine hundred " + tenToNinetyNine(n%100);
     	return "";
     }
-    
+
     static String thousandTo9999(int n) {
     	int yonketa = (n%10000) / 1000;
     	if (yonketa == 0) return hundredTo999(n%10000);
@@ -85,11 +85,11 @@ public class IntToEng {
     	if (yonketa == 9) return "nine thousand " + hundredTo999(n%1000);
     	return "";
     }
-    
+
     static String tenthousandTo99999(int n) {
     	int goketa = (n%100000) / 10000;
     	if (goketa == 0) return thousandTo9999(n%100000);
-    	if (goketa == 1) return tenToNineteen((n%100000)/1000) + " thousand  " + hundredTo999(n%10000);
+    	if (goketa == 1) return tenToNineteen((n%100000)/1000) + " thousand " + hundredTo999(n%10000);
     	if (goketa == 2) return "twenty " + thousandTo9999(n%10000);
     	if (goketa == 3) return "thirty " + thousandTo9999(n%10000);
     	if (goketa == 4) return "forty " + thousandTo9999(n%10000);
@@ -98,6 +98,21 @@ public class IntToEng {
     	if (goketa == 7) return "seventy " + thousandTo9999(n%10000);
     	if (goketa == 8) return "eighty " + thousandTo9999(n%10000);
     	if (goketa == 9) return "ninety " + thousandTo9999(n%10000);
+    	return "";
+    }
+
+    static String onehundredthousandTo999999(int n) {
+    	int rokuketa = (n%1000000) / 100000;
+    	if (rokuketa == 0) return tenthousandTo99999(n%1000000);
+    	if (rokuketa == 1) return "one hundred " + tenthousandTo99999(n%100000);
+    	if (rokuketa == 2) return "two hundred " + tenthousandTo99999(n%100000);
+    	if (rokuketa == 3) return "three hundred " + tenthousandTo99999(n%100000);
+    	if (rokuketa == 4) return "four hundred " + tenthousandTo99999(n%100000);
+    	if (rokuketa == 5) return "five hundred " + tenthousandTo99999(n%100000);
+    	if (rokuketa == 6) return "six hundred " + tenthousandTo99999(n%100000);
+    	if (rokuketa == 7) return "seven hundred " + tenthousandTo99999(n%100000);
+    	if (rokuketa == 8) return "eight hundred " + tenthousandTo99999(n%100000);
+    	if (rokuketa == 9) return "nine hundred " + tenthousandTo99999(n%100000);
     	return "";
     }
 }
