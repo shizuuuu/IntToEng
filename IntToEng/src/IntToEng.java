@@ -9,8 +9,8 @@ public class IntToEng {
     static String translateEng(int n) {
     	if (n == 0) {
     		return "zero";
-    	} else if (n < 100000000) {
-    		return tenmillionTo99million(n);
+    	} else if (n <= Integer.MAX_VALUE) {
+    		return onehundredmillionTo999million(n);
     	}
     	return "";
 
@@ -131,7 +131,7 @@ public class IntToEng {
     	return "";
     }
     
-    static String tenmillionTo99million (int n) {
+    static String tenmillionTo99million(int n) {
     	int hachiketa = (n%100000000) / 10000000;
     	if (hachiketa == 0) return onemillionTo9999999(n%100000000);
     	if (hachiketa == 1) return tenToNineteen((n%100000000)/1000000) + " million " + onehundredthousandTo999999(n%1000000);
@@ -143,6 +143,21 @@ public class IntToEng {
     	if (hachiketa == 7) return "seventty " + onemillionTo9999999(n%100000000);
     	if (hachiketa == 8) return "eighty " + onemillionTo9999999(n%100000000);
     	if (hachiketa == 9) return "ninety " + onemillionTo9999999(n%100000000);
+    	return "";
+    }
+    
+    static String onehundredmillionTo999million(int n) {
+    	int kyuketa = (n%1000000000) / 100000000;
+    	if (kyuketa == 0) return tenmillionTo99million(n%1000000000);
+    	if (kyuketa == 1) return "one hundred " + tenmillionTo99million(n%1000000000);
+    	if (kyuketa == 2) return "two hundred " + tenmillionTo99million(n%1000000000);
+    	if (kyuketa == 3) return "three hundred " + tenmillionTo99million(n%1000000000);
+    	if (kyuketa == 4) return "four hundred " + tenmillionTo99million(n%1000000000);
+    	if (kyuketa == 5) return "five hundred " + tenmillionTo99million(n%1000000000);
+    	if (kyuketa == 6) return "six hundred " + tenmillionTo99million(n%1000000000);
+    	if (kyuketa == 7) return "seven hundred " + tenmillionTo99million(n%1000000000);
+    	if (kyuketa == 8) return "eight hundred " + tenmillionTo99million(n%1000000000);
+    	if (kyuketa == 9) return "nine hundred " + tenmillionTo99million(n%1000000000);
     	return "";
     }
 }
