@@ -162,12 +162,16 @@ public class IntToEng {
     }
 
     static String onebillionToMAXVALUE(int n) {
-    	char tenk = (Integer.toString(n)).charAt(0);
-    	int tenketa = Character.getNumericValue(tenk);
-    	int fromNine = n - tenketa*1000000000;
-    	if (tenketa == 0) return onehundredmillionTo999million(n);
-    	if (tenketa == 1) return "one billion " + onehundredmillionTo999million(fromNine);
-    	if (tenketa == 2) return "two billion " + onehundredmillionTo999million(fromNine);
-    	return "";
+    	String ns = Integer.toString(n);
+    	if (ns.length() < 10) {
+    		return onehundredmillionTo999million(n);
+    	} else {
+        	int tenketa = Character.getNumericValue(ns.charAt(0));
+        	int fromNine = n - tenketa*1000000000;
+        	if (tenketa == 1) return "one billion " + onehundredmillionTo999million(fromNine);
+        	if (tenketa == 2) return "two billion " + onehundredmillionTo999million(fromNine);
+        	return "";
+    	}
+
     }
 }
